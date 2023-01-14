@@ -7,30 +7,27 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "empleados")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Empleado {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, unique = true)
-    private Long id;
+    private Long idEmpleado;
 
-    @Column(nullable = false, length = 25 )
-    private String nombre;
+    @Column(name = "nombre_empleado", length = 35, nullable = false)
+    private String nombreEmpleado;
 
-    @Column(nullable = false , length = 25)
-    private String primer_apellido;
+    @Column( name = "apellido_empleado" , length = 35, nullable = false )
+    private String apellidoEmpleado;
 
-    @Column(nullable = false , length = 30, unique = true)
-    private String email;
+    @Column( name = "email_empleado" , length = 40, nullable = false , unique = true)
+    private String emailEmpleado;
 
 }
