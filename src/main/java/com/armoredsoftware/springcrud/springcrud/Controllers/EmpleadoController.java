@@ -41,6 +41,7 @@ public class EmpleadoController {
         return empleadoService.getEmployeeById(id);
     }
 
+    //   http://localhost:8080/api/v1/empleado/{id}
     @PutMapping("/empleados/{id}")
     public ResponseEntity<Empleado> updateEmployee( @PathVariable Long id , @RequestBody Empleado empleado ){
         return empleadoService.updateEmployee(id, empleado);

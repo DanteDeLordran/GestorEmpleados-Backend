@@ -39,7 +39,10 @@ public class EmpleadoService {
         
         respuesta.setNombreEmpleado(empleado.getNombreEmpleado());
         respuesta.setApellidoEmpleado(empleado.getApellidoEmpleado());
-        respuesta.setEmailEmpleado(empleado.getEmailEmpleado());
+
+        if (respuesta.getEmailEmpleado() != empleado.getEmailEmpleado()) {
+            respuesta.setEmailEmpleado(empleado.getEmailEmpleado()); 
+        }
 
         Empleado updatedEmployee = empleadoRepository.save(respuesta);
 
