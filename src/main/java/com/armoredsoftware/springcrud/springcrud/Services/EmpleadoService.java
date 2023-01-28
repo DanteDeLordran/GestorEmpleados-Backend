@@ -34,4 +34,16 @@ public class EmpleadoService {
         return ResponseEntity.ok(respuesta);
     }
 
+    public ResponseEntity<Empleado> updateEmployee( Long id , Empleado empleado){
+        Empleado respuesta = empleadoRepository.findById(id).orElseThrow( () -> new ResourceNotFoundException("No existe el empleado con el id : " + id));
+        
+        respuesta.setNombreEmpleado(empleado.getNombreEmpleado());
+        respuesta.setApellidoEmpleado(empleado.getApellidoEmpleado());
+        respuesta.setEmailEmpleado(empleado.getEmailEmpleado());
+
+        Empleado updatedEmployee = empleadoRepository.save(respuesta);
+
+        return ResponseEntity.ok(updatedEmployee);
+    }
+
 }
