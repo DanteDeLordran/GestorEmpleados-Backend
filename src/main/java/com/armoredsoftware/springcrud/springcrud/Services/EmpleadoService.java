@@ -4,8 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.armoredsoftware.springcrud.springcrud.Exceptions.ResourceNotFoundException;
 import com.armoredsoftware.springcrud.springcrud.Models.Empleado;
 import com.armoredsoftware.springcrud.springcrud.Repository.EmpleadoRepository;
 
@@ -27,8 +29,9 @@ public class EmpleadoService {
         return empleadoRepository.findById(empleado.getIdEmpleado());
     }
 
-    public Optional<Empleado> getEmployeeById( Long id ){
-        return empleadoRepository.findById(id);
+    public ResponseEntity<Empleado> getEmployeeById( Long id ){
+        Empleado respuesta = empleadoRepository.findById(id).orElseThrow( () -> new ResourceNotFoundException("No existe el empleado con el id : " + id));
+        return ResponseEntity.ok(respuesta);
     }
 
 }

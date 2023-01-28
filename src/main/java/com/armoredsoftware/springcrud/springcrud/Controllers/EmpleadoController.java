@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.armoredsoftware.springcrud.springcrud.Exceptions.ResourceNotFoundException;
 import com.armoredsoftware.springcrud.springcrud.Models.Empleado;
 import com.armoredsoftware.springcrud.springcrud.Services.EmpleadoService;
 
@@ -38,8 +37,7 @@ public class EmpleadoController {
     //   http://localhost:8080/api/v1/empleado/{id}
     @GetMapping("/empleados/{id}")
     public ResponseEntity<Empleado> getEmployeeById( @PathVariable Long id){
-        Empleado respuesta = empleadoService.getEmployeeById(id).orElseThrow( () -> new ResourceNotFoundException("No existe el empleado con el id : " + id));
-        return ResponseEntity.ok(respuesta);
+        return empleadoService.getEmployeeById(id);
     }
 
 }
