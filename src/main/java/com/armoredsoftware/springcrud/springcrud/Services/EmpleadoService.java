@@ -27,5 +27,8 @@ public class EmpleadoService {
         return empleadoRepository.findById(empleado.getIdEmpleado());
     }
 
+    public Optional<Empleado> getEmployeeById( Long id ){
+        return empleadoRepository.findById(id);
+    }
 
 }
