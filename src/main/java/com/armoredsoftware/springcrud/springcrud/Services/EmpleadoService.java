@@ -49,4 +49,12 @@ public class EmpleadoService {
         return ResponseEntity.ok(updatedEmployee);
     }
 
+    public boolean deleteEmployee( Long id ){
+        if( empleadoRepository.existsById(id) ){
+            empleadoRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
 }
